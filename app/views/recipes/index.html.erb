@@ -1,9 +1,6 @@
-<h1>Recipes</h1>
-<p>Controller instance variable available here: <%= @yesterday_time %></p>
-<p>Current Time = <%= Time.now %> created in View</p>
-<p>This time Yesterday = <%= @yesterday_time %> created in Controller</p>
-<p>This time Yesterday = <%= @key_val %> created in Controller</p>
-<table>
+<h1>Recipes for <%= @search_term %></h1>
+
+<table border="1">
 	<tr>
 		<th>Image</th>
 		<th>Recipe Title</th>
@@ -11,11 +8,10 @@
 	</tr>
 	<% @recipes.each do |recipe| %>
 		<tr>
- 			<td></td>
- 			<td><%= image_tag(recipe["image_url"], size: "100x100") %></td>
- 			<td><%= recipe["f2f_url"] %></td>
-			<td><%= recipe["title"] %></td>
+ 			<td><%= link_to image_tag(recipe["image_url"], size: "100x100"), recipe["source_url"] %></td>
+ 			<td><%= link_to sanitize(recipe["title"]), recipe["source_url"] %></td>
 			<td><%= recipe["social_rank"] %></td>
 		</tr>
 	<% end %>
 </table>
+<%= @current_time %>
